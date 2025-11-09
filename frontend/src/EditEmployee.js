@@ -17,7 +17,7 @@ function EditEmployee() {
     axios
       .get(`http://localhost:8080/api/employees/${id}`)
       .then((res) => setEmp(res.data))
-      .catch((err) => console.error("❌ Error fetching employee:", err));
+      .catch((err) => console.error(" Error fetching employee:", err));
   }, [id]);
 
   // Handle field input changes
@@ -32,19 +32,19 @@ function EditEmployee() {
     const deptRegex = /^[A-Za-z\s]+$/;
 
     if (!emp.name || !emp.email || !emp.department) {
-      alert("⚠️ Please fill all fields before updating.");
+      alert(" Please fill all fields before updating.");
       return false;
     }
     if (!nameRegex.test(emp.name)) {
-      alert("❌ Invalid Name! Please use letters and spaces only.");
+      alert(" Invalid Name! Please use letters and spaces only.");
       return false;
     }
     if (!emailRegex.test(emp.email)) {
-      alert("❌ Invalid Email! Please enter a valid email address.");
+      alert(" Invalid Email! Please enter a valid email address.");
       return false;
     }
     if (!deptRegex.test(emp.department)) {
-      alert("❌ Invalid Department! Use letters only (no symbols or numbers).");
+      alert(" Invalid Department! Use letters only (no symbols or numbers).");
       return false;
     }
     return true;
@@ -57,12 +57,12 @@ function EditEmployee() {
     axios
       .put(`http://localhost:8080/api/employees/${id}`, emp)
       .then(() => {
-        alert("✅ Employee updated successfully!");
+        alert(" Employee updated successfully!");
         navigate("/");
       })
       .catch((err) => {
-        console.error("❌ Error updating employee:", err);
-        alert("⚠️ Something went wrong. Please try again.");
+        console.error(" Error updating employee:", err);
+        alert(" Something went wrong. Please try again.");
       });
   };
 
